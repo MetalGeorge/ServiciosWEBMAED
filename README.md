@@ -9,6 +9,7 @@ JOrge Escobar
 RAúl Vargas
 
 CArlos Montellano
+
 ==================================
 Crear Reverse proxy
 	- nGINX y configurarlo
