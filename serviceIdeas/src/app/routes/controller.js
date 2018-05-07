@@ -14,10 +14,10 @@ module.exports = app => {
     console.log(req);
     console.log(req.body);
 
-    const { idea, proposername, votes } = req.body;
+    const { idea, proposername } = req.body;
     
 
-    var sql = "INSERT INTO dbideas.ideas (idea, proposername, votes) VALUES('idea', 'proposername', 0);";
+    var sql = "INSERT INTO dbideas.ideas (idea, proposername, votes) VALUES('"+idea+"', '"+proposername+"', 0);";
         console.log(sql);
 
         connection.query(sql
