@@ -14,6 +14,7 @@ apiEndpoints:
     # host: 104.41.59.129
     paths: 
      - '/ideas'
+     - '/votes'
   users:
     host: localhost
     # uncomment for production

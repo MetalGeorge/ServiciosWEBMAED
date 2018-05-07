@@ -30,4 +30,23 @@ module.exports = app => {
       res.end();   
     
   });
+
+  app.delete('/ideas', (req, res) => {
+    console.log(req);
+    console.log(req.body);
+
+    const { ideaid } = req.body;
+    
+    var sql = "DELETE FROM dbideas.ideas WHERE id =  "+ideaid;
+        console.log(sql);
+
+        connection.query(sql
+        , function(err, result) {
+          if (err) {
+            res.json({ error: err })
+          };
+            console.log("record deleted");
+        });
+      res.end();   
+  });
 };

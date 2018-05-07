@@ -11,7 +11,8 @@ const winston = require('winston');
     ]
   });
 
-require('./app/routes/controller')(app);
+  require('./app/routes/controller')(app);
+  require('./app/routes/controllervotes')(app);
 
 // starting the server
 app.listen(app.get('port'), () => {
