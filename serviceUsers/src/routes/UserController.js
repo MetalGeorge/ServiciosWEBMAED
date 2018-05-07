@@ -9,6 +9,7 @@ var User = require('../user/User');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config/config');
+var amqp = require('amqplib/callback_api');
 
 // CREATES A NEW USER
 router.post('/register', function(req, res) {
@@ -51,6 +52,20 @@ router.get('/user/:id', VerifyToken, function(req, res, next) {
 router.delete('/:id', VerifyToken, function(req, res, next) {
     User.findByIdAndRemove(req.params.id, function(err, user) {
         if (err) return res.status(500).send("There was a problem deleting the user.");
+        amqp.connect('amqp://localhost', function(err, conn) {
+            conn.createChannel(function(err, ch) {
+                var q = 'user-delete';
+                var msg = '{id-user:' + req.params.id + '}';
+                ch.assertQueue(q, { durable: false });
+                // Se envia a la cola para que lo lea ideas 
+                ch.sendToQueue(q, new Buffer(msg));
+                console.log(" [x] Sent instruction %s", msg);
+            });
+            setTimeout(function() {
+                conn.close();
+                //    process.exit(0)
+            }, 500);
+        });
         res.status(200).send("User: " + user.name + " was deleted.");
     });
 });
@@ -69,7 +84,7 @@ router.post('/login', function(req, res) {
         if (!user) return res.status(404).send('No user found.');
         var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
         if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-        var token = jwt.sign({ id: user._id }, config.secret, {
+        var token = jwt.sign({ id: user._id, name: user.name }, config.secret, {
             expiresIn: 86400 // expires in 24 hours
         });
         res.status(200).send({ auth: true, token: token });
