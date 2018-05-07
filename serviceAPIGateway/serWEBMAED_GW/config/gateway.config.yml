@@ -1,0 +1,50 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  hostname: localhost
+apiEndpoints:
+  ideas:
+    host: localhost
+    paths: 
+     - '/ip' 
+     - '/ideas'
+  users:
+    host: localhost
+    paths: 
+     - '/users'
+serviceEndpoints:
+  httpbin:
+    url: 'http://localhost:8888'
+  httpbin2:
+    url: 'http://localhost:3000'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  ideas:
+    apiEndpoints:
+      - ideas
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: httpbin 
+              changeOrigin: true
+  users:
+    apiEndpoints:
+      - users
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: httpbin2
+              changeOrigin: true
