@@ -19,7 +19,7 @@ transports: [
     }),
 
     new(require('winston-daily-rotate-file'))({
-        filename: './logs/ideas-apimodules.log',
+        filename: './logs/users-apimodules.log',
         timestamp: now,
         datePattern: 'dd-MM-YYYY',
         prepend: true,

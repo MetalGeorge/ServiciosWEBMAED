@@ -3,6 +3,7 @@ const dbConnection = require('../../config/dbConnection');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../../config/config');
+var logger = require('../../config/log');
 
 module.exports = app => {
 
@@ -12,16 +13,17 @@ module.exports = app => {
     res.status(200).send(idea);
   });
 
+  // confirmar si esto es requerido
   app.get('/votes', VerifyToken, (req, res) => {
+    logger.info("Begin List votes");
     connection.query('SELECT * FROM dbideas.votes ORDER BY id', (err, result) => {
       res.json(result);
     });
+    logger.info("End List votes");
   });
 
   app.post('/votes', VerifyToken, (req, res) => {
-    console.log(req);
-    console.log(req.body);
-
+    logger.info("Begin Insert vote");
     const { voterid, ideaid } = req.body;
     
     var sql = "INSERT INTO dbideas.votes (voterid, ideaid) VALUES ('"+voterid+"', "+ideaid+");";
@@ -32,14 +34,15 @@ module.exports = app => {
           if (err) {
             res.json({ error: err })
           };
-            console.log("1 record inserted");
+            console.log("Vote Inserted");
+            logger.info("Vote Inserted");
         });
       res.end();   
+      logger.info("End Insert vote");
   });
 
   app.delete('/votes', VerifyToken, (req, res) => {
-    console.log(req);
-    console.log(req.body);
+    logger.info("Begin Delete vote");
 
     const { voterid, ideaid } = req.body;
     
@@ -51,8 +54,10 @@ module.exports = app => {
           if (err) {
             res.json({ error: err })
           };
-            console.log("record deleted");
+            console.log("Vote Deleted");
+            logger.info("Vote Deleted");
         });
       res.end();   
+      logger.info("End Delete vote");
   });
 };

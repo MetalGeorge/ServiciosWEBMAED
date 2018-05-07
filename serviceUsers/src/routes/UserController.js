@@ -10,10 +10,12 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config/config');
 var amqp = require('amqplib/callback_api');
+var logger = require('../config/log');
+
 
 // CREATES A NEW USER
 router.post('/register', function(req, res) {
-
+    logger.info("Begin Register User");
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
     User.create({
@@ -28,28 +30,34 @@ router.post('/register', function(req, res) {
                 expiresIn: 86400 // expires in 24 hours
             });
             res.status(200).send({ auth: true, token: token });
+            logger.info("End Register User");
         });
 });
 
 // RETURNS ALL THE USERS IN THE DATABASE
 router.get('/', VerifyToken, function(req, res, next) {
+    logger.info("Begin List Users");
     User.find({}, function(err, users) {
         if (err) return res.status(500).send("There was a problem finding the users.");
         res.status(200).send(users);
+        logger.info("End List Users");
     });
 });
 
 // GETS A SINGLE USER FROM THE DATABASE
 router.get('/user/:id', VerifyToken, function(req, res, next) {
+    logger.info("Begin List User");
     User.findById(req.params.id, function(err, user) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!user) return res.status(404).send("No user found.");
         res.status(200).send(user);
+        logger.info("End List User");
     });
 });
 
 // DELETES A USER FROM THE DATABASE
 router.delete('/:id', VerifyToken, function(req, res, next) {
+    logger.info("Begin Delete User");
     User.findByIdAndRemove(req.params.id, function(err, user) {
         if (err) return res.status(500).send("There was a problem deleting the user.");
         amqp.connect('amqp://localhost', function(err, conn) {
@@ -60,6 +68,7 @@ router.delete('/:id', VerifyToken, function(req, res, next) {
                 // Se envia a la cola para que lo lea ideas 
                 ch.sendToQueue(q, new Buffer(msg));
                 console.log(" [x] Sent instruction %s", msg);
+                logger.info("Sent Delete User to Queue");
             });
             setTimeout(function() {
                 conn.close();
@@ -67,18 +76,22 @@ router.delete('/:id', VerifyToken, function(req, res, next) {
             }, 500);
         });
         res.status(200).send("User: " + user.name + " was deleted.");
+        logger.info("End Delete User");
     });
 });
 
 // UPDATES A SINGLE USER IN THE DATABASE
 router.put('/:id', function(req, res) {
+    logger.info("Begin Update User");
     User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, user) {
         if (err) return res.status(500).send("There was a problem updating the user.");
         res.status(200).send(user);
     });
+    logger.info("End Update User");
 });
 // LOGIN
 router.post('/login', function(req, res) {
+    logger.info("Begin Login User");
     User.findOne({ email: req.body.email }, function(err, user) {
         if (err) return res.status(500).send('Error on the server.');
         if (!user) return res.status(404).send('No user found.');
@@ -88,18 +101,20 @@ router.post('/login', function(req, res) {
             expiresIn: 86400 // expires in 24 hours
         });
         res.status(200).send({ auth: true, token: token });
+        logger.info("End Login User");
     });
 });
 
 //
 router.get('/me', VerifyToken, function(req, res, next) {
-
+    logger.info("Begin me");
     User.findById(req.userId, { password: 0 }, function(err, user) {
 
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!user) return res.status(404).send("No user found.");
 
         res.status(200).send(user);
+        logger.info("End me");
     });
 });
 
