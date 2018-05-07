@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../../config/config');
 var logger = require('../../config/log');
+var amqp = require('amqplib/callback_api');
 
 module.exports = app => {
 
@@ -33,6 +34,21 @@ module.exports = app => {
             if (err) {
                 res.json({ error: err })
             };
+            amqp.connect('amqp://localhost', function(err, conn) {
+                conn.createChannel(function(err, ch) {
+                    var ex = 'events2';
+                    var msg = '{event:"REFRESH_VOTES_COUNT",ideaid=' + ideaid + '}';
+                    ch.assertExchange(ex, 'fanout', { durable: true });
+                    ch.publish(ex, 'VOTES', new Buffer(msg));
+                    console.log(" [x] Sent %s", msg);
+                    logger.info(" [x] Sent %s", msg);
+                });
+
+                setTimeout(function() {
+                    conn.close();
+                    //  process.exit(0) 
+                }, 500);
+            });
             console.log("Vote Inserted");
             logger.info("Vote Inserted");
         });
@@ -43,15 +59,30 @@ module.exports = app => {
     app.delete('/votes', VerifyToken, (req, res) => {
         logger.info("Begin Delete vote");
 
-        const { voterid, ideaid } = req.body;
+        const { ideaid } = req.body;
 
-        var sql = "DELETE FROM dbideas.votes WHERE voterid = '" + voterid + "' OR ideaid = " + ideaid;
+        var sql = "DELETE FROM dbideas.votes WHERE userid = '" + req.userId + "' AND ideaid = " + ideaid;
         console.log(sql);
 
         connection.query(sql, function(err, result) {
             if (err) {
                 res.json({ error: err })
             };
+            amqp.connect('amqp://localhost', function(err, conn) {
+                conn.createChannel(function(err, ch) {
+                    var q = 'VOTES';
+                    var msg = '{id-user:' + req.userId + '}';
+                    ch.assertQueue(q, { durable: false });
+                    // Se envia a la cola para que se actualize los votos 
+                    ch.sendToQueue(q, new Buffer(msg));
+                    console.log(" [x] Sent instruction %s", msg);
+                    logger.info("Sent Actualize Votes to Queue");
+                });
+                setTimeout(function() {
+                    conn.close();
+                    //    process.exit(0)
+                }, 500);
+            });
             console.log("Vote Deleted");
             logger.info("Vote Deleted");
         });
