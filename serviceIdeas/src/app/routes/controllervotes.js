@@ -1,16 +1,24 @@
+var VerifyToken = require('./VerifyToken');
 const dbConnection = require('../../config/dbConnection');
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var config = require('../../config/config');
 
 module.exports = app => {
 
   const connection = dbConnection();
 
-  app.get('/votes', (req, res) => {
+  app.use(function(idea, req, res, next) {
+    res.status(200).send(idea);
+  });
+
+  app.get('/votes', VerifyToken, (req, res) => {
     connection.query('SELECT * FROM dbideas.votes ORDER BY id', (err, result) => {
       res.json(result);
     });
   });
 
-  app.post('/votes', (req, res) => {
+  app.post('/votes', VerifyToken, (req, res) => {
     console.log(req);
     console.log(req.body);
 
@@ -29,7 +37,7 @@ module.exports = app => {
       res.end();   
   });
 
-  app.delete('/votes', (req, res) => {
+  app.delete('/votes', VerifyToken, (req, res) => {
     console.log(req);
     console.log(req.body);
 

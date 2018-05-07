@@ -1,16 +1,24 @@
+var VerifyToken = require('./VerifyToken');
 const dbConnection = require('../../config/dbConnection');
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var config = require('../../config/config');
 
 module.exports = app => {
 
   const connection = dbConnection();
 
-  app.get('/ideas', (req, res) => {
+  app.use(function(idea, req, res, next) {
+    res.status(200).send(idea);
+  });
+
+  app.get('/ideas', VerifyToken, (req, res) => {
     connection.query('SELECT * FROM dbideas.ideas ORDER BY id', (err, result) => {
       res.json(result);
     });
   });
 
-  app.post('/ideas', (req, res) => {
+  app.post('/ideas', VerifyToken, (req, res) => {
     console.log(req);
     console.log(req.body);
 
@@ -31,7 +39,7 @@ module.exports = app => {
     
   });
 
-  app.delete('/ideas', (req, res) => {
+  app.delete('/ideas', VerifyToken, (req, res) => {
     console.log(req);
     console.log(req.body);
 
