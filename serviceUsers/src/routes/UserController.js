@@ -9,6 +9,7 @@ var User = require('../user/User');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config/config');
+var amqp = require('amqplib/callback_api');
 
 // CREATES A NEW USER
 router.post('/register', function(req, res) {
@@ -51,6 +52,20 @@ router.get('/user/:id', VerifyToken, function(req, res, next) {
 router.delete('/:id', VerifyToken, function(req, res, next) {
     User.findByIdAndRemove(req.params.id, function(err, user) {
         if (err) return res.status(500).send("There was a problem deleting the user.");
+        amqp.connect('amqp://localhost', function(err, conn) {
+            conn.createChannel(function(err, ch) {
+                var q = 'user-delete';
+                var msg = '{id-user:' + req.params.id + '}';
+                ch.assertQueue(q, { durable: false });
+                // Se envia a la cola para que lo lea ideas 
+                ch.sendToQueue(q, new Buffer(msg));
+                console.log(" [x] Sent instruction %s", msg);
+            });
+            setTimeout(function() {
+                conn.close();
+                //    process.exit(0)
+            }, 500);
+        });
         res.status(200).send("User: " + user.name + " was deleted.");
     });
 });
@@ -78,14 +93,14 @@ router.post('/login', function(req, res) {
 
 //
 router.get('/me', VerifyToken, function(req, res, next) {
-    res.status(200).send(req.name);
-    /*  User.findById(req.userId, { password: 0 }, function(err, user) {
 
-          if (err) return res.status(500).send("There was a problem finding the user.");
-          if (!user) return res.status(404).send("No user found.");
+    User.findById(req.userId, { password: 0 }, function(err, user) {
 
-          res.status(200).send(user);
-      });*/
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!user) return res.status(404).send("No user found.");
+
+        res.status(200).send(user);
+    });
 });
 
 // add the middleware function
