@@ -1,18 +1,29 @@
 http:
   port: 8080
+  # uncomment for production
+  # port: 80
 admin:
   port: 9876
   hostname: localhost
+  # uncomment for production
+  # hostname: 104.41.59.129
 apiEndpoints:
   ideas:
     host: localhost
+    # uncomment for production
+    # host: 104.41.59.129
     paths: 
-     - '/ip' 
      - '/ideas'
   users:
     host: localhost
+    # uncomment for production
+    # host: 104.41.59.129    
     paths: 
      - '/users'
+     - '/users/register'
+     - '/users/login'
+     - '/users/me'
+     - '/users/user'
 serviceEndpoints:
   httpbin:
     url: 'http://localhost:8888'
