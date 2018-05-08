@@ -37,8 +37,7 @@ module.exports = app => {
             amqp.connect('amqp://localhost', function(err, conn) {
                 conn.createChannel(function(err, ch) {
                     var q = 'VOTES';
-                    var msg = "{refrescar}";
-
+                    var msg = '{"operation":"REFRESH_VOTES_IDEA","ideaid":' + ideaid + '}';
                     ch.assertQueue(q, { durable: true });
                     ch.sendToQueue(q, new Buffer(msg), { persistent: true });
                     console.log(" [x] Sent '%s'", msg);
