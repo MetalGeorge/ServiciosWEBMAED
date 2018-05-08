@@ -232,3 +232,36 @@
 2018-05-08T19:47:34.779Z - info: End Delete vote
 2018-05-08T19:47:34.780Z - info: End update votes
 2018-05-08T19:47:34.787Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5aecec955e71583df02a0841"}'
+2018-05-08T19:48:24.466Z - info: Express server for Ideas listening on port8888
+2018-05-08T19:49:02.183Z - info: End Delete vote
+2018-05-08T19:49:02.184Z - info: End update votes
+2018-05-08T19:49:02.192Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5aecec955e71583df02a0841"}'
+2018-05-08T19:49:02.737Z - info: Votes Deleted
+2018-05-08T19:49:50.104Z - info: Begin Insert vote
+2018-05-08T19:49:50.106Z - info: End Insert vote
+2018-05-08T19:49:50.369Z - info: Vote Inserted
+2018-05-08T19:49:50.374Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":31}'
+2018-05-08T19:49:51.857Z - info: Begin Insert vote
+2018-05-08T19:49:51.857Z - info: End Insert vote
+2018-05-08T19:49:52.067Z - info: Vote Inserted
+2018-05-08T19:49:52.074Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":31}'
+2018-05-08T19:49:52.766Z - info: Begin Insert vote
+2018-05-08T19:49:52.766Z - info: End Insert vote
+2018-05-08T19:49:53.049Z - info: Vote Inserted
+2018-05-08T19:49:53.154Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":31}'
+2018-05-08T19:49:53.618Z - info: Begin Insert vote
+2018-05-08T19:49:53.619Z - info: End Insert vote
+2018-05-08T19:49:53.928Z - info: Vote Inserted
+2018-05-08T19:49:53.934Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":31}'
+2018-05-08T19:51:31.270Z - info: End Delete vote
+2018-05-08T19:51:31.273Z - info: End update votes
+2018-05-08T19:51:31.289Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5aecec955e71583df02a0841"}'
+2018-05-08T19:51:31.479Z - info: Votes Deleted
+2018-05-08T19:53:00.688Z - info: End Delete vote
+2018-05-08T19:53:00.688Z - info: End update votes
+2018-05-08T19:53:00.713Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5aecec955e71583df02a0841"}'
+2018-05-08T19:53:00.890Z - info: Votes Deleted
+2018-05-08T19:55:29.812Z - info: End Delete vote
+2018-05-08T19:55:29.813Z - info: End update votes
+2018-05-08T19:55:29.868Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5af200980cbf3912b8ff6302"}'
+2018-05-08T19:55:30.462Z - info: Votes Deleted

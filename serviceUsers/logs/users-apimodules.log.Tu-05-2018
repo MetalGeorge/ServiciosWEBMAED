@@ -140,3 +140,13 @@
 2018-05-08T19:53:00.549Z - info: Begin Delete User
 2018-05-08T19:53:00.681Z - info: End Delete User
 2018-05-08T19:53:00.686Z - info:  [x] Sent '{"operation":"DELETE_USER","userid":"5aecec955e71583df02a0841"}'
+2018-05-08T19:54:58.630Z - info: Express server for Users listening on port3000
+2018-05-08T19:55:02.593Z - info: Begin Register User
+2018-05-08T19:55:02.818Z - info: End Register User
+2018-05-08T19:55:04.050Z - info: Begin Register User
+2018-05-08T19:55:04.340Z - info: End Register User
+2018-05-08T19:55:08.558Z - info: Begin List Users
+2018-05-08T19:55:08.692Z - info: End List Users
+2018-05-08T19:55:29.644Z - info: Begin Delete User
+2018-05-08T19:55:29.777Z - info: End Delete User
+2018-05-08T19:55:29.808Z - info:  [x] Sent '{"operation":"DELETE_USER","userid":"5af200980cbf3912b8ff6302"}'

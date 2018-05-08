@@ -29,9 +29,10 @@ CArlos Montellano
 			* Deshacer voto 
 			* Listar ideas
 		* Mandar a la cola (envia)
-			* Actualizar los votos (con el servicio estadísticas)
+			* Actualizar los votos por idea (con el servicio estadísticas)
 		* suscribir a la cola (recibe)
 			* Para borrar ideas de un usuario (de servicio usuario)
+			* Para Actualizar los votos por usuario (con elservicio estadisticas)
 	* Base de datos Ideas
 		* MySQL
 * usuarios
@@ -39,19 +40,21 @@ CArlos Montellano
 		* Métodos
 			* Crear el usuario
 			* borrar el usuario
+			* Listar usuarios
 			* Autenticar usuarios
 		* Mandar a la cola
 			* Cuando se elimine un usuario (para borrar ideas y votos) (servicio ideas)
-		* NO Suscribir a la cola  (parece que no se suscribe)
+
 			
-	* Base de datos Ideas
-		* MySQL
+	* Base de datos Users
+		* MongoDB
 
 * Estadisticas
 	(NOTA: al parecer el servicio no tiene relación con la base users y servicio users)
 	* Servicio (Todo con logs)
 		* Suscribir a la cola
 			* Actualizar los votos por idea
+			* Actualizar los votos por usuarios 
 	* Base de datos 
 		* MySQL(usa la de ideas)
 
@@ -65,6 +68,7 @@ CArlos Montellano
 	* Nodejs
 	* Express
 	* MySQL
+	* MOngodb
 	* rabbitMQ
 	
 ==============
