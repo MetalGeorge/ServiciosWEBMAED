@@ -62,19 +62,22 @@ router.delete('/:id', VerifyToken, function(req, res, next) {
         if (err) return res.status(500).send("There was a problem deleting the user.");
         amqp.connect('amqp://localhost', function(err, conn) {
             conn.createChannel(function(err, ch) {
-                var q = 'user-delete';
-                var msg = '{id-user:' + req.params.id + '}';
-                ch.assertQueue(q, { durable: false });
-                // Se envia a la cola para que lo lea ideas 
-                ch.sendToQueue(q, new Buffer(msg));
-                console.log(" [x] Sent instruction %s", msg);
-                logger.info("Sent Delete User to Queue");
+                var q = 'USERS';
+                var msg = '{"operation":"DELETE_USER","userid":"' + req.userId + '"}';
+                ch.assertQueue(q, { durable: true });
+                ch.sendToQueue(q, new Buffer(msg), { persistent: true });
+                console.log(" [x] Sent '%s'", msg);
+                logger.info(" [x] Sent '%s'", msg);
             });
             setTimeout(function() {
                 conn.close();
-                //    process.exit(0)
+                //process.exit(0) 
             }, 500);
         });
+
+
+
+
         res.status(200).send("User: " + user.name + " was deleted.");
         logger.info("End Delete User");
     });

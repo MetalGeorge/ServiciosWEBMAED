@@ -1,6 +1,5 @@
 const dbConnection = require('../config/dbConnection');
 
-
 var Stat = {
 
     updatestatbyproposer: function(proposerid) {
@@ -11,6 +10,7 @@ var Stat = {
         connection.query(sql, (err, result) => {
             console.log("actualizo con exito");
         });
+        connection.end();
     },
     updatestatbyidea: function(ideaid) {
         const connection = dbConnection();
@@ -18,6 +18,7 @@ var Stat = {
         connection.query(sql, (err, result) => {
             console.log("actualizo con exito");
         });
+        connection.end();
 
     },
 

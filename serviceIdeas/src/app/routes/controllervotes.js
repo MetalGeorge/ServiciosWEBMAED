@@ -7,7 +7,7 @@ var logger = require('../../config/log');
 var amqp = require('amqplib/callback_api');
 
 module.exports = app => {
-    
+
     app.use(function(idea, req, res, next) {
         res.status(200).send(idea);
     });
@@ -20,7 +20,7 @@ module.exports = app => {
             });
             connection.release();
         });
-        
+
         logger.info("End List votes");
     });
 
@@ -55,7 +55,7 @@ module.exports = app => {
             res.end();
             connection.release();
         });
-        
+
         logger.info("End Insert vote");
     });
 
@@ -75,16 +75,15 @@ module.exports = app => {
                 amqp.connect('amqp://localhost', function(err, conn) {
                     conn.createChannel(function(err, ch) {
                         var q = 'VOTES';
-                        var msg = '{id-user:' + req.userId + '}';
-                        ch.assertQueue(q, { durable: false });
-                        // Se envia a la cola para que se actualize los votos 
-                        ch.sendToQueue(q, new Buffer(msg));
-                        console.log(" [x] Sent instruction %s", msg);
-                        logger.info("Sent Actualize Votes to Queue");
+                        var msg = '{"operation":"REFRESH_VOTES_IDEA","ideaid":' + ideaid + '}';
+                        ch.assertQueue(q, { durable: true });
+                        ch.sendToQueue(q, new Buffer(msg), { persistent: true });
+                        console.log(" [x] Sent '%s'", msg);
+                        logger.info(" [x] Sent '%s'", msg);
                     });
                     setTimeout(function() {
                         conn.close();
-                        //    process.exit(0)
+                        //process.exit(0) 
                     }, 500);
                 });
                 console.log("Vote Deleted");
@@ -93,7 +92,7 @@ module.exports = app => {
             res.end();
             connection.release();
         });
-        
+
         logger.info("End Delete vote");
     });
 };

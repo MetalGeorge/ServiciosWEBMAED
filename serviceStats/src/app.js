@@ -20,12 +20,7 @@ amqp.connect('amqp://localhost', function(err, conn) {
             if (message.operation == 'REFRESH_VOTES_USER') {
                 Stat.updatestatbyidea(message.userid);
             }
-            console.log(message.operation);
             console.log(" [x] Received %s", msg.content.toString());
-            //setTimeout(function() {
-
-
-            //}, secs * 1000);
             logger.info("End update votes");
             console.log(" [x] Done");
             ch.ack(msg);
