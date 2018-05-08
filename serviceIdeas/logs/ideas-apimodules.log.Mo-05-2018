@@ -156,3 +156,31 @@
 2018-05-07T22:56:45.156Z - info: End Insert vote
 2018-05-07T22:56:45.925Z - info: Vote Inserted
 2018-05-07T22:56:45.952Z - info:  [x] Sent {event:"REFRESH_VOTES_COUNT",ideaid=88}
+2018-05-07T23:07:44.591Z - info: Express server for Ideas listening on port8888
+2018-05-07T23:08:02.741Z - info: Begin Insert vote
+2018-05-07T23:08:02.746Z - info: End Insert vote
+2018-05-07T23:08:03.550Z - info: Vote Inserted
+2018-05-07T23:08:03.566Z - info:  [x] Sent {event:"REFRESH_VOTES_COUNT",ideaid=99}
+2018-05-07T23:12:03.987Z - info: Express server for Ideas listening on port8888
+2018-05-07T23:12:12.384Z - info: Begin Insert vote
+2018-05-07T23:12:12.390Z - info: End Insert vote
+2018-05-07T23:12:12.931Z - info: Vote Inserted
+2018-05-07T23:12:12.967Z - info:  [x] Sent {event:"REFRESH_VOTES_COUNT",ideaid=99}
+2018-05-07T23:52:06.092Z - info: Express server for Ideas listening on port8888
+2018-05-07T23:52:23.256Z - info: Begin Insert vote
+2018-05-07T23:52:23.263Z - info: End Insert vote
+2018-05-07T23:52:24.437Z - info: Vote Inserted
+2018-05-07T23:52:24.451Z - info:  [x] Sent '{refrescar}'
+2018-05-07T23:56:19.845Z - info: Express server for Ideas listening on port8888
+2018-05-07T23:56:26.234Z - info: Begin Insert vote
+2018-05-07T23:56:26.240Z - info: End Insert vote
+2018-05-07T23:56:26.811Z - info: Vote Inserted
+2018-05-07T23:56:26.853Z - info:  [x] Sent '{refrescar}'
+2018-05-07T23:56:28.086Z - info: Begin Insert vote
+2018-05-07T23:56:28.089Z - info: End Insert vote
+2018-05-07T23:56:28.242Z - info: Vote Inserted
+2018-05-07T23:56:28.248Z - info:  [x] Sent '{refrescar}'
+2018-05-07T23:56:29.125Z - info: Begin Insert vote
+2018-05-07T23:56:29.126Z - info: End Insert vote
+2018-05-07T23:56:29.227Z - info: Vote Inserted
+2018-05-07T23:56:29.235Z - info:  [x] Sent '{refrescar}'

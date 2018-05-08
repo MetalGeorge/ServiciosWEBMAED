@@ -36,17 +36,17 @@ module.exports = app => {
             };
             amqp.connect('amqp://localhost', function(err, conn) {
                 conn.createChannel(function(err, ch) {
-                    var ex = 'events2';
-                    var msg = '{event:"REFRESH_VOTES_COUNT",ideaid=' + ideaid + '}';
-                    ch.assertExchange(ex, 'fanout', { durable: true });
-                    ch.publish(ex, 'VOTES', new Buffer(msg));
-                    console.log(" [x] Sent %s", msg);
-                    logger.info(" [x] Sent %s", msg);
-                });
+                    var q = 'VOTES';
+                    var msg = "{refrescar}";
 
+                    ch.assertQueue(q, { durable: true });
+                    ch.sendToQueue(q, new Buffer(msg), { persistent: true });
+                    console.log(" [x] Sent '%s'", msg);
+                    logger.info(" [x] Sent '%s'", msg);
+                });
                 setTimeout(function() {
                     conn.close();
-                    //  process.exit(0) 
+                    //process.exit(0) 
                 }, 500);
             });
             console.log("Vote Inserted");
