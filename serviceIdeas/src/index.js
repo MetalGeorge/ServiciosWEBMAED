@@ -1,5 +1,6 @@
 const app = require('./config/server');
 const winston = require('winston');
+var dbConnection = require('./config/dbConnection').pool;
 var logger = require('./config/log');
 var amqp = require('amqplib/callback_api');
 var amqp2 = require('amqplib/callback_api');
@@ -18,7 +19,17 @@ amqp.connect('amqp://localhost', function(err, conn) {
             var str = msg.content.toString();
             var message = JSON.parse(str);
             if (message.operation == 'DELETE_USER') {
+                // enviar a borrar votos usuario
+                var sql = "DELETE FROM dbideas.votes WHERE userid = '" + message.userid + "'";
+                dbConnection.getConnection(function(err, connection) {
+                    connection.query(sql, function(err, result) {
+                        console.log("Votes Deleted");
+                        logger.info("Votes Deleted");
+                    });
+                    connection.release();
+                });
 
+                logger.info("End Delete vote");
                 amqp2.connect('amqp://localhost', function(err, conn) {
                     conn.createChannel(function(err, ch) {
                         var q = 'VOTES';

@@ -63,7 +63,7 @@ router.delete('/:id', VerifyToken, function(req, res, next) {
         amqp.connect('amqp://localhost', function(err, conn) {
             conn.createChannel(function(err, ch) {
                 var q = 'USERS';
-                var msg = '{"operation":"DELETE_USER","userid":"' + req.userId + '"}';
+                var msg = '{"operation":"DELETE_USER","userid":"' + req.params.id + '"}';
                 ch.assertQueue(q, { durable: true });
                 ch.sendToQueue(q, new Buffer(msg), { persistent: true });
                 console.log(" [x] Sent '%s'", msg);
