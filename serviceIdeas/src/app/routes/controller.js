@@ -1,5 +1,5 @@
 var VerifyToken = require('./VerifyToken');
-const dbConnection = require('../../config/dbConnection');
+var dbConnection = require('../../config/dbConnection').pool;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../../config/config');
@@ -7,17 +7,19 @@ var logger = require('../../config/log');
 
 module.exports = app => {
 
-    const connection = dbConnection();
-
     app.use(function(idea, req, res, next) {
         res.status(200).send(idea);
     });
 
-    app.get('/ideas', VerifyToken, (req, res) => {
+    app.get('/ideas',  VerifyToken,  (req, res) => {        
         logger.info("Begin List ideas");
-        connection.query('SELECT * FROM dbideas.ideas ORDER BY id', (err, result) => {
-            res.json(result);
+        dbConnection.getConnection(function(err, connection) {
+            connection.query('SELECT * FROM dbideas.ideas ORDER BY id', (err, result) => {
+                res.json(result);
+            });
+            connection.release();
         });
+        
         logger.info("End List ideas");
     });
 
@@ -28,14 +30,18 @@ module.exports = app => {
         var sql = "INSERT INTO dbideas.ideas (idea, proposername, votes,userid) VALUES('" + idea + "', '" + req.name + "', 0,'" + req.userId + "');";
         console.log(sql);
 
-        connection.query(sql, function(err, result) {
-            if (err) {
-                res.json({ error: err })
-            };
-            console.log("Idea inserted");
-            logger.info("Idea inserted");
+        dbConnection.getConnection(function(err, connection){
+            connection.query(sql, function(err, result) {
+                if (err) {
+                    res.json({ error: err })
+                };
+                console.log("Idea inserted");
+                logger.info("Idea inserted");
+            });
+            res.end();
+            connection.release();
         });
-        res.end();
+        
         logger.info("End Insert ideas");
     });
 
@@ -46,14 +52,18 @@ module.exports = app => {
         var sql = "DELETE FROM dbideas.ideas WHERE id =  " + ideaid;
         console.log(sql);
 
-        connection.query(sql, function(err, result) {
-            if (err) {
-                res.json({ error: err })
-            };
-            console.log("Idea Deleted");
-            logger.info("Idea Deleted");
-        });
-        res.end();
+        dbConnection.getConnection(function(err, connection){
+            connection.query(sql, function(err, result) {
+                if (err) {
+                    res.json({ error: err })
+                };
+                console.log("Idea Deleted");
+                logger.info("Idea Deleted");
+            });
+            res.end();
+            connection.release();
+        });        
+        
         logger.info("End Delete ideas");
     });
 };
