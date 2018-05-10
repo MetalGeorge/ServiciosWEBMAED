@@ -149,3 +149,73 @@
 2018-05-09T12:44:01.680Z - info: End Insert vote
 2018-05-09T12:44:39.271Z - info: Begin Insert vote
 2018-05-09T12:44:39.273Z - info: End Insert vote
+2018-05-09T12:45:06.760Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:45:10.845Z - info: Begin Insert vote
+2018-05-09T12:45:10.848Z - info: End Insert vote
+2018-05-09T12:45:19.669Z - info: Begin Insert vote
+2018-05-09T12:45:19.670Z - info: End Insert vote
+2018-05-09T12:45:20.741Z - info: Begin Insert vote
+2018-05-09T12:45:20.742Z - info: End Insert vote
+2018-05-09T12:45:21.760Z - info: Begin Insert vote
+2018-05-09T12:45:21.760Z - info: End Insert vote
+2018-05-09T12:45:29.734Z - info: Begin Insert vote
+2018-05-09T12:45:29.735Z - info: End Insert vote
+2018-05-09T12:45:30.078Z - info: Vote Inserted
+2018-05-09T12:45:30.102Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":9}'
+2018-05-09T12:46:03.251Z - info: Begin Insert vote
+2018-05-09T12:46:03.251Z - info: End Insert vote
+2018-05-09T12:46:07.549Z - info: Begin Insert vote
+2018-05-09T12:46:07.550Z - info: End Insert vote
+2018-05-09T12:46:15.452Z - info: Begin Insert vote
+2018-05-09T12:46:15.452Z - info: End Insert vote
+2018-05-09T12:47:49.910Z - info: Begin Delete vote
+2018-05-09T12:47:49.911Z - info: End Delete vote
+2018-05-09T12:47:50.110Z - info: Vote Deleted
+2018-05-09T12:47:50.147Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:49:06.392Z - info: Begin Insert vote
+2018-05-09T12:49:06.393Z - info: End Insert vote
+2018-05-09T12:49:06.744Z - info: Vote Inserted
+2018-05-09T12:49:06.750Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:49:10.943Z - info: Begin Insert vote
+2018-05-09T12:49:10.943Z - info: End Insert vote
+2018-05-09T12:49:28.036Z - info: Begin Insert vote
+2018-05-09T12:49:28.037Z - info: End Insert vote
+2018-05-09T12:49:32.962Z - info: Begin Delete vote
+2018-05-09T12:49:32.962Z - info: End Delete vote
+2018-05-09T12:49:33.211Z - info: Vote Deleted
+2018-05-09T12:49:33.216Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:51:30.132Z - info: Begin Delete ideas
+2018-05-09T12:51:30.132Z - info: End Delete ideas
+2018-05-09T12:51:30.402Z - info: Idea Deleted
+2018-05-09T12:51:30.514Z - info: Votes Deleted
+2018-05-09T12:53:53.227Z - info: Begin Insert ideas
+2018-05-09T12:53:53.228Z - info: End Insert ideas
+2018-05-09T12:53:54.012Z - info: Idea inserted
+2018-05-09T12:54:38.175Z - info: Begin Insert vote
+2018-05-09T12:54:38.176Z - info: End Insert vote
+2018-05-09T12:54:38.528Z - info: Vote Inserted
+2018-05-09T12:54:38.569Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":44}'
+2018-05-09T12:54:47.649Z - info: Begin Insert vote
+2018-05-09T12:54:47.650Z - info: End Insert vote
+2018-05-09T12:54:48.010Z - info: Vote Inserted
+2018-05-09T12:54:48.051Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":43}'
+2018-05-09T12:55:01.199Z - info: Begin List votes
+2018-05-09T12:55:01.199Z - info: End List votes
+2018-05-09T12:56:16.394Z - info: End Delete vote
+2018-05-09T12:56:16.395Z - info: End update votes
+2018-05-09T12:56:16.529Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5af27ff7df2bf337c874fc08"}'
+2018-05-09T12:56:16.601Z - info: Votes Deleted
+2018-05-09T12:56:16.704Z - info: Ideas Deleted
+2018-05-09T15:53:50.842Z - info: Begin Insert ideas
+2018-05-09T15:53:50.843Z - info: End Insert ideas
+2018-05-09T15:53:52.166Z - info: Idea inserted
+2018-05-09T17:17:59.615Z - info: End Delete vote
+2018-05-09T17:17:59.669Z - info: End update votes
+2018-05-09T17:17:59.736Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"undefined"}'
+2018-05-09T17:18:01.196Z - info: Votes Deleted
+2018-05-09T17:18:01.295Z - info: Ideas Deleted
+2018-05-09T17:19:46.669Z - info: End Delete vote
+2018-05-09T17:19:46.669Z - info: End update votes
+2018-05-09T17:19:46.674Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_USER","userid":"5af31920df2bf337c874fc09"}'
+2018-05-09T17:19:46.923Z - info: Votes Deleted
+2018-05-09T17:19:47.077Z - info: Ideas Deleted

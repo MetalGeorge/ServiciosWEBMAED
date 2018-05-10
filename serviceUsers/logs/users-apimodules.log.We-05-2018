@@ -47,3 +47,6 @@
 2018-05-09T17:25:28.339Z - info: Begin Delete User
 2018-05-09T17:25:28.494Z - info: End Delete User
 2018-05-09T17:25:28.508Z - info:  [x] Sent '{"operation":"DELETE_USER","userid":"5af329e6ed922019043c741e"}'
+2018-05-09T17:26:39.014Z - info: Express server for Users listening on port3000
+2018-05-09T17:26:46.116Z - info: Begin List Users
+2018-05-09T17:26:46.254Z - info: End List Users
