@@ -28,31 +28,47 @@ module.exports = app => {
         logger.info("Begin Insert vote");
         const { ideaid } = req.body;
 
-        var sql = "INSERT INTO dbideas.votes (userid, ideaid) VALUES ('" + req.userId + "', " + ideaid + ");";
+        var sql = "select count(*) as votoanterior from  votes where ideaid=" + ideaid + " and userid='" + req.userId + "'";
         console.log(sql);
         dbConnection.getConnection(function(err, connection) {
             connection.query(sql, function(err, result) {
                 if (err) {
                     res.json({ error: err })
                 };
-                amqp.connect('amqp://localhost', function(err, conn) {
-                    conn.createChannel(function(err, ch) {
-                        var q = 'VOTES';
-                        var msg = '{"operation":"REFRESH_VOTES_IDEA","ideaid":' + ideaid + '}';
-                        ch.assertQueue(q, { durable: true });
-                        ch.sendToQueue(q, new Buffer(msg), { persistent: true });
-                        console.log(" [x] Sent '%s'", msg);
-                        logger.info(" [x] Sent '%s'", msg);
+                console.log(result[0].votoanterior);
+                if (result[0].votoanterior > 0) {
+                    console.log('Ya ha votado');
+                    res.status(500).send({ message: 'User has already voted to the idea' });
+
+
+                } else {
+                    sql = "INSERT INTO dbideas.votes (userid, ideaid) VALUES ('" + req.userId + "', " + ideaid + ");";
+                    connection.query(sql, function(err, result) {
+                        if (err) {
+                            res.json({ error: err })
+                        };
+                        amqp.connect('amqp://localhost', function(err, conn) {
+                            conn.createChannel(function(err, ch) {
+                                var q = 'VOTES';
+                                var msg = '{"operation":"REFRESH_VOTES_IDEA","ideaid":' + ideaid + '}';
+                                ch.assertQueue(q, { durable: true });
+                                ch.sendToQueue(q, new Buffer(msg), { persistent: true });
+                                console.log(" [x] Sent '%s'", msg);
+                                logger.info(" [x] Sent '%s'", msg);
+                            });
+                            setTimeout(function() {
+                                conn.close();
+                                //process.exit(0) 
+                            }, 500);
+                        });
+                        console.log("Vote Inserted");
+                        logger.info("Vote Inserted");
+                        res.end();
                     });
-                    setTimeout(function() {
-                        conn.close();
-                        //process.exit(0) 
-                    }, 500);
-                });
-                console.log("Vote Inserted");
-                logger.info("Vote Inserted");
+                }
+
             });
-            res.end();
+
             connection.release();
         });
 

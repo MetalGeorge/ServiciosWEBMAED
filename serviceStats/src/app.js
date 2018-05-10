@@ -15,9 +15,11 @@ amqp.connect('amqp://localhost', function(err, conn) {
             var str = msg.content.toString();
             var message = JSON.parse(str);
             if (message.operation == 'REFRESH_VOTES_IDEA') {
+                console.log("actualizar voto idea" + message.ideaid);
                 Stat.updatestatbyidea(message.ideaid);
             }
             if (message.operation == 'REFRESH_VOTES_USER') {
+                console.log("actualizar voto usuario" + message.userid);
                 Stat.updatestatbyidea(message.userid);
             }
             console.log(" [x] Received %s", msg.content.toString());

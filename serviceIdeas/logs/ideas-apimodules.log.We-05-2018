@@ -1,0 +1,151 @@
+2018-05-09T04:37:00.958Z - info: Express server for Ideas listening on port8888
+2018-05-09T04:41:31.557Z - info: Begin Insert ideas
+2018-05-09T04:41:31.561Z - info: End Insert ideas
+2018-05-09T04:41:32.714Z - info: Idea inserted
+2018-05-09T05:01:27.746Z - info: Begin Insert ideas
+2018-05-09T05:01:27.747Z - info: End Insert ideas
+2018-05-09T05:01:28.542Z - info: Idea inserted
+2018-05-09T05:01:42.288Z - info: Begin List ideas
+2018-05-09T05:01:42.288Z - info: End List ideas
+2018-05-09T05:15:26.057Z - info: Begin Insert ideas
+2018-05-09T05:15:26.058Z - info: End Insert ideas
+2018-05-09T05:15:26.858Z - info: Idea inserted
+2018-05-09T05:15:48.774Z - info: Begin Insert ideas
+2018-05-09T05:15:48.774Z - info: End Insert ideas
+2018-05-09T05:15:48.975Z - info: Idea inserted
+2018-05-09T05:15:53.822Z - info: Begin Insert ideas
+2018-05-09T05:15:53.823Z - info: End Insert ideas
+2018-05-09T05:15:54.074Z - info: Idea inserted
+2018-05-09T11:21:33.523Z - info: Begin Insert ideas
+2018-05-09T11:21:33.524Z - info: End Insert ideas
+2018-05-09T11:21:34.223Z - info: Idea inserted
+2018-05-09T11:24:07.068Z - info: Begin Insert vote
+2018-05-09T11:24:07.107Z - info: End Insert vote
+2018-05-09T11:24:07.811Z - info: Vote Inserted
+2018-05-09T11:24:07.874Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":38}'
+2018-05-09T11:24:14.790Z - info: Begin Insert vote
+2018-05-09T11:24:14.790Z - info: End Insert vote
+2018-05-09T11:24:15.057Z - info: Vote Inserted
+2018-05-09T11:24:15.099Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":39}'
+2018-05-09T11:24:19.588Z - info: Begin Insert vote
+2018-05-09T11:24:19.589Z - info: End Insert vote
+2018-05-09T11:24:19.852Z - info: Vote Inserted
+2018-05-09T11:24:19.857Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T11:38:02.419Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:38:17.644Z - info: Begin Insert vote
+2018-05-09T11:38:17.647Z - info: End Insert vote
+2018-05-09T11:39:38.745Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:40:47.545Z - info: Begin Insert vote
+2018-05-09T11:40:47.548Z - info: End Insert vote
+2018-05-09T11:42:15.609Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:42:18.828Z - info: Begin Insert vote
+2018-05-09T11:42:18.831Z - info: End Insert vote
+2018-05-09T11:43:15.746Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:43:20.300Z - info: Begin Insert vote
+2018-05-09T11:43:20.304Z - info: End Insert vote
+2018-05-09T11:45:21.405Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:45:26.184Z - info: Begin Insert vote
+2018-05-09T11:45:26.186Z - info: End Insert vote
+2018-05-09T11:45:26.881Z - info: Vote Inserted
+2018-05-09T11:45:26.901Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T11:48:39.684Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:48:48.726Z - info: Begin Insert vote
+2018-05-09T11:48:48.729Z - info: End Insert vote
+2018-05-09T11:48:49.655Z - info: Vote Inserted
+2018-05-09T11:48:49.676Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T11:49:41.746Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:49:47.362Z - info: Begin Insert vote
+2018-05-09T11:49:47.364Z - info: End Insert vote
+2018-05-09T11:54:11.354Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:54:12.756Z - info: Begin Insert vote
+2018-05-09T11:54:12.759Z - info: End Insert vote
+2018-05-09T11:54:13.671Z - info: Vote Inserted
+2018-05-09T11:54:13.679Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T11:54:50.307Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:54:54.127Z - info: Begin Insert vote
+2018-05-09T11:54:54.130Z - info: End Insert vote
+2018-05-09T11:54:54.831Z - info: Vote Inserted
+2018-05-09T11:54:54.846Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T11:55:36.478Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:55:40.258Z - info: Begin Insert vote
+2018-05-09T11:55:40.261Z - info: End Insert vote
+2018-05-09T11:59:31.968Z - info: Express server for Ideas listening on port8888
+2018-05-09T11:59:35.920Z - info: Begin Insert vote
+2018-05-09T11:59:35.922Z - info: End Insert vote
+2018-05-09T12:00:45.131Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:00:47.572Z - info: Begin Insert vote
+2018-05-09T12:00:47.574Z - info: End Insert vote
+2018-05-09T12:00:48.244Z - info: Vote Inserted
+2018-05-09T12:00:48.282Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:01:36.104Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:01:39.633Z - info: Begin Insert vote
+2018-05-09T12:01:39.636Z - info: End Insert vote
+2018-05-09T12:01:40.383Z - info: Vote Inserted
+2018-05-09T12:01:40.403Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:03:04.543Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:03:11.642Z - info: Begin Insert vote
+2018-05-09T12:03:11.644Z - info: End Insert vote
+2018-05-09T12:03:37.731Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:03:42.445Z - info: Begin Insert vote
+2018-05-09T12:03:42.449Z - info: End Insert vote
+2018-05-09T12:03:43.138Z - info: Vote Inserted
+2018-05-09T12:03:43.147Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:05:22.841Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:05:27.604Z - info: Begin Insert vote
+2018-05-09T12:05:27.607Z - info: End Insert vote
+2018-05-09T12:05:28.474Z - info: Vote Inserted
+2018-05-09T12:05:28.487Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:06:32.266Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:06:54.321Z - info: Begin Insert vote
+2018-05-09T12:06:54.324Z - info: End Insert vote
+2018-05-09T12:08:15.105Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:08:18.316Z - info: Begin Insert vote
+2018-05-09T12:08:18.320Z - info: End Insert vote
+2018-05-09T12:08:19.016Z - info: Vote Inserted
+2018-05-09T12:08:19.037Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:09:55.449Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:09:57.997Z - info: Begin Insert vote
+2018-05-09T12:09:57.999Z - info: End Insert vote
+2018-05-09T12:09:58.824Z - info: Vote Inserted
+2018-05-09T12:09:58.844Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:12:09.981Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:12:13.542Z - info: Begin Insert vote
+2018-05-09T12:12:13.551Z - info: End Insert vote
+2018-05-09T12:13:12.279Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:13:16.457Z - info: Begin Insert vote
+2018-05-09T12:13:16.460Z - info: End Insert vote
+2018-05-09T12:22:12.748Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:22:18.583Z - info: Begin Insert vote
+2018-05-09T12:22:18.586Z - info: End Insert vote
+2018-05-09T12:23:53.471Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:24:03.978Z - info: Begin Insert vote
+2018-05-09T12:24:03.981Z - info: End Insert vote
+2018-05-09T12:24:43.150Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:24:45.656Z - info: Begin Insert vote
+2018-05-09T12:24:45.659Z - info: End Insert vote
+2018-05-09T12:24:46.356Z - info: Vote Inserted
+2018-05-09T12:24:46.385Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":37}'
+2018-05-09T12:35:25.847Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:35:44.176Z - info: Begin Insert vote
+2018-05-09T12:35:44.180Z - info: End Insert vote
+2018-05-09T12:36:31.323Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:36:34.870Z - info: Begin Insert vote
+2018-05-09T12:36:34.874Z - info: End Insert vote
+2018-05-09T12:37:53.969Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:37:57.668Z - info: Begin Insert vote
+2018-05-09T12:37:57.671Z - info: End Insert vote
+2018-05-09T12:40:02.005Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:40:11.296Z - info: Begin Insert vote
+2018-05-09T12:40:11.299Z - info: End Insert vote
+2018-05-09T12:40:11.950Z - info: Vote Inserted
+2018-05-09T12:40:11.959Z - info:  [x] Sent '{"operation":"REFRESH_VOTES_IDEA","ideaid":10}'
+2018-05-09T12:40:21.569Z - info: Begin Insert vote
+2018-05-09T12:40:21.570Z - info: End Insert vote
+2018-05-09T12:41:45.209Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:41:48.373Z - info: Begin Insert vote
+2018-05-09T12:41:48.378Z - info: End Insert vote
+2018-05-09T12:43:59.305Z - info: Express server for Ideas listening on port8888
+2018-05-09T12:44:01.657Z - info: Begin Insert vote
+2018-05-09T12:44:01.680Z - info: End Insert vote
+2018-05-09T12:44:39.271Z - info: Begin Insert vote
+2018-05-09T12:44:39.273Z - info: End Insert vote

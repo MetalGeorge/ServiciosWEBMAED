@@ -26,6 +26,11 @@ amqp.connect('amqp://localhost', function(err, conn) {
                         console.log("Votes Deleted");
                         logger.info("Votes Deleted");
                     });
+                    sql = "DELETE FROM dbideas.ideas WHERE userid = '" + message.userid + "'";
+                    connection.query(sql, function(err, result) {
+                        console.log("Ideas Deleted");
+                        logger.info("Ideas Deleted");
+                    });
                     connection.release();
                 });
 

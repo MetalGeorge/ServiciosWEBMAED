@@ -11,7 +11,7 @@ module.exports = app => {
         res.status(200).send(idea);
     });
 
-    app.get('/ideas',  VerifyToken,  (req, res) => {        
+    app.get('/ideas', VerifyToken, (req, res) => {
         logger.info("Begin List ideas");
         dbConnection.getConnection(function(err, connection) {
             connection.query('SELECT * FROM dbideas.ideas ORDER BY id', (err, result) => {
@@ -19,7 +19,7 @@ module.exports = app => {
             });
             connection.release();
         });
-        
+
         logger.info("End List ideas");
     });
 
@@ -30,7 +30,7 @@ module.exports = app => {
         var sql = "INSERT INTO dbideas.ideas (idea, proposername, votes,userid) VALUES('" + idea + "', '" + req.name + "', 0,'" + req.userId + "');";
         console.log(sql);
 
-        dbConnection.getConnection(function(err, connection){
+        dbConnection.getConnection(function(err, connection) {
             connection.query(sql, function(err, result) {
                 if (err) {
                     res.json({ error: err })
@@ -41,7 +41,7 @@ module.exports = app => {
             res.end();
             connection.release();
         });
-        
+
         logger.info("End Insert ideas");
     });
 
@@ -52,7 +52,7 @@ module.exports = app => {
         var sql = "DELETE FROM dbideas.ideas WHERE id =  " + ideaid;
         console.log(sql);
 
-        dbConnection.getConnection(function(err, connection){
+        dbConnection.getConnection(function(err, connection) {
             connection.query(sql, function(err, result) {
                 if (err) {
                     res.json({ error: err })
@@ -60,10 +60,20 @@ module.exports = app => {
                 console.log("Idea Deleted");
                 logger.info("Idea Deleted");
             });
+            sql = "DELETE FROM dbideas.votes WHERE ideaid =  " + ideaid;
+            connection.query(sql, function(err, result) {
+                if (err) {
+                    res.json({ error: err })
+                };
+                console.log("Votes Deleted");
+                logger.info("Votes Deleted");
+            });
+
+
             res.end();
             connection.release();
-        });        
-        
+        });
+
         logger.info("End Delete ideas");
     });
 };
