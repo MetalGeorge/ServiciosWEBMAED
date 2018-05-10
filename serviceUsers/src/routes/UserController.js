@@ -59,11 +59,13 @@ router.get('/user/:id', VerifyToken, function(req, res, next) {
 router.delete('/', VerifyToken, function(req, res, next) {
     logger.info("Begin Delete User");
     const { id } = req.body;
-    User.findByIdAndRemove(id, function(err, user) {
-        if (err) return res.status(500).send("There was a problem deleting the user.");
-        res.status(200).send("User: " + user.name + " was deleted.");
-        logger.info("End Delete User");
-        amqp.connect('amqp://localhost', function(err, conn) {
+	
+     User.findByIdAndRemove(id, function(err, user) {
+         if (err) return res.status(500).send("There was a problem deleting the user.");
+        
+         logger.info("End Delete User");
+		 res.status(200).send("User: " + user.name + " was deleted."); 
+		 amqp.connect('amqp://localhost', function(err, conn) {
             conn.createChannel(function(err, ch) {
                 var q = 'USERS';
                 var msg = '{"operation":"DELETE_USER","userid":"' + id + '"}';
@@ -71,11 +73,15 @@ router.delete('/', VerifyToken, function(req, res, next) {
                 ch.sendToQueue(q, new Buffer(msg), { persistent: true });
                 console.log(" [x] Sent '%s'", msg);
                 logger.info(" [x] Sent '%s'", msg);
-                conn.close();
             });
+			setTimeout(function() {
+				conn.close();
+                //process.exit(0) 
+               }, 500);
         });
-
-    });
+		
+		res.end();
+     });
 });
 
 // UPDATES A SINGLE USER IN THE DATABASE
